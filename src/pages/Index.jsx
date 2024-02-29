@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Grid, GridItem, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, Icon, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, Grid, GridItem, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, Icon, VStack, useColorMode, Button } from "@chakra-ui/react";
 import { FaChartLine, FaDollarSign, FaShoppingCart, FaUsers } from "react-icons/fa";
 
 const DashboardStat = ({ icon, label, value, delta, deltaType }) => (
@@ -20,11 +20,17 @@ const DashboardStat = ({ icon, label, value, delta, deltaType }) => (
   </Stat>
 );
 
+import { FaMoon, FaSun } from "react-icons/fa";
+
 const Index = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box p={8}>
       <VStack spacing={8}>
         <Flex w="full" justifyContent="space-between" alignItems="center">
+          <Button onClick={toggleColorMode} size="md" fontSize="lg" variant="ghost">
+            {colorMode === "light" ? <Icon as={FaMoon} /> : <Icon as={FaSun} />}
+          </Button>
           <Text fontSize="2xl" fontWeight="bold">
             Dashboard
           </Text>
